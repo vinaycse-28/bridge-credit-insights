@@ -24,6 +24,7 @@ import { Route as AuthenticatedBIdScoreRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedBIdStoryRouteImport } from './routes/_authenticated/b.$id.story'
 import { Route as AuthenticatedBIdTransactionsRouteImport } from './routes/_authenticated/b.$id.transactions'
 import { Route as AuthenticatedBIdTrustRouteImport } from './routes/_authenticated/b.$id.trust'
+import { Route as AuthenticatedBIdUpdateRouteImport } from './routes/_authenticated/b.$id.update'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -104,6 +105,11 @@ const AuthenticatedBIdTrustRoute = AuthenticatedBIdTrustRouteImport.update({
   path: '/b/$id/trust',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedBIdUpdateRoute = AuthenticatedBIdUpdateRouteImport.update({
+  id: '/b/$id/update',
+  path: '/b/$id/update',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -120,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/b/$id/story': typeof AuthenticatedBIdStoryRoute
   '/b/$id/transactions': typeof AuthenticatedBIdTransactionsRoute
   '/b/$id/trust': typeof AuthenticatedBIdTrustRoute
+  '/b/$id/update': typeof AuthenticatedBIdUpdateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -136,6 +143,7 @@ export interface FileRoutesByTo {
   '/b/$id/story': typeof AuthenticatedBIdStoryRoute
   '/b/$id/transactions': typeof AuthenticatedBIdTransactionsRoute
   '/b/$id/trust': typeof AuthenticatedBIdTrustRoute
+  '/b/$id/update': typeof AuthenticatedBIdUpdateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -154,6 +162,7 @@ export interface FileRoutesById {
   '/_authenticated/b/$id/story': typeof AuthenticatedBIdStoryRoute
   '/_authenticated/b/$id/transactions': typeof AuthenticatedBIdTransactionsRoute
   '/_authenticated/b/$id/trust': typeof AuthenticatedBIdTrustRoute
+  '/_authenticated/b/$id/update': typeof AuthenticatedBIdUpdateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -172,6 +181,7 @@ export interface FileRouteTypes {
     | '/b/$id/story'
     | '/b/$id/transactions'
     | '/b/$id/trust'
+    | '/b/$id/update'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -188,6 +198,7 @@ export interface FileRouteTypes {
     | '/b/$id/story'
     | '/b/$id/transactions'
     | '/b/$id/trust'
+    | '/b/$id/update'
   id:
     | '__root__'
     | '/'
@@ -205,6 +216,7 @@ export interface FileRouteTypes {
     | '/_authenticated/b/$id/story'
     | '/_authenticated/b/$id/transactions'
     | '/_authenticated/b/$id/trust'
+    | '/_authenticated/b/$id/update'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -320,6 +332,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBIdTrustRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/b/$id/update': {
+      id: '/_authenticated/b/$id/update'
+      path: '/b/$id/update'
+      fullPath: '/b/$id/update'
+      preLoaderRoute: typeof AuthenticatedBIdUpdateRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -336,6 +355,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedBIdStoryRoute: typeof AuthenticatedBIdStoryRoute
   AuthenticatedBIdTransactionsRoute: typeof AuthenticatedBIdTransactionsRoute
   AuthenticatedBIdTrustRoute: typeof AuthenticatedBIdTrustRoute
+  AuthenticatedBIdUpdateRoute: typeof AuthenticatedBIdUpdateRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -351,6 +371,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedBIdStoryRoute: AuthenticatedBIdStoryRoute,
   AuthenticatedBIdTransactionsRoute: AuthenticatedBIdTransactionsRoute,
   AuthenticatedBIdTrustRoute: AuthenticatedBIdTrustRoute,
+  AuthenticatedBIdUpdateRoute: AuthenticatedBIdUpdateRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
