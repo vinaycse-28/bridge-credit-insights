@@ -113,7 +113,7 @@ export async function runAnalysis(businessId: string) {
     business_id: businessId,
     user_id: userId,
     score: result.score.value,
-    result: result as unknown as Record<string, unknown>,
+    result: result as never,
   });
   if (error) throw error;
   await supabase

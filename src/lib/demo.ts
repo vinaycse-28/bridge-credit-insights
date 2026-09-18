@@ -75,8 +75,8 @@ function generate(opts: GenOptions): Txn[] {
         txn_date: dateOf(y, m, 1 + Math.floor(rand() * 27)),
         type: "income",
         amount,
-        payment_method: INCOME_METHODS[Math.floor(rand() * INCOME_METHODS.length)],
-        category: opts.incomeCategories[Math.floor(rand() * opts.incomeCategories.length)],
+        payment_method: INCOME_METHODS[Math.floor(rand() * INCOME_METHODS.length)] ?? "UPI",
+        category: opts.incomeCategories[Math.floor(rand() * opts.incomeCategories.length)] ?? "Sales",
         description: opts.incomeNote,
       });
     }
@@ -90,8 +90,8 @@ function generate(opts: GenOptions): Txn[] {
         txn_date: dateOf(y, m, 1 + Math.floor(rand() * 27)),
         type: "expense",
         amount: Math.round(monthExpense * share),
-        payment_method: EXPENSE_METHODS[Math.floor(rand() * EXPENSE_METHODS.length)],
-        category: opts.expenseCategories[Math.floor(rand() * opts.expenseCategories.length)],
+        payment_method: EXPENSE_METHODS[Math.floor(rand() * EXPENSE_METHODS.length)] ?? "Bank Transfer",
+        category: opts.expenseCategories[Math.floor(rand() * opts.expenseCategories.length)] ?? "Operating",
         description: "Operating outflow",
       });
     }

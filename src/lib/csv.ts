@@ -35,7 +35,9 @@ function normalizeDate(raw: string): string | null {
   if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
   const dmy = s.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
   if (dmy) {
-    const [, d, m, y] = dmy;
+    const d = dmy[1] ?? "";
+    const m = dmy[2] ?? "";
+    const y = dmy[3] ?? "";
     return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
   }
   return null;
@@ -61,7 +63,7 @@ export function parseTransactionsCsv(text: string): ParsedCsv {
     .filter(Boolean);
   if (!lines.length) return { rows: [], errors: ["The file is empty."] };
 
-  const header = splitLine(lines[0]).map((h) => h.toLowerCase().replace(/\s+/g, "_"));
+  const header = splitLine(lines[0] ?? "").map((h) => h.toLowerCase().replace(/\s+/g, "_"));
   const idx = (name: string) => header.indexOf(name);
   if (idx("amount") === -1 || idx("date") === -1) {
     return {

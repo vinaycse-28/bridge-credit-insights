@@ -22,5 +22,5 @@ export function shortDate(d: string | null) {
 export function monthShort(key: string) {
   const [y, m] = key.split("-");
   const names = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  return `${names[Number(m) - 1] ?? m} ${y.slice(2)}`;
+  return `${names[Number(m) - 1] ?? m} ${(y ?? "").slice(2)}`;
 }

@@ -68,8 +68,12 @@ const monthKey = (d: string) => d.slice(0, 7);
 
 function monthRange(start: string, end: string) {
   const out: string[] = [];
-  let [y, m] = start.split("-").map(Number);
-  const [ey, em] = end.split("-").map(Number);
+  const sp = start.split("-").map(Number);
+  const ep = end.split("-").map(Number);
+  let y = sp[0] ?? 0;
+  let m = sp[1] ?? 1;
+  const ey = ep[0] ?? 0;
+  const em = ep[1] ?? 1;
   while (y < ey || (y === ey && m <= em)) {
     out.push(`${y}-${String(m).padStart(2, "0")}`);
     m += 1;
@@ -91,7 +95,7 @@ function isValidDate(s: string | null | undefined) {
 
 export function monthLabel(key: string) {
   const [y, m] = key.split("-");
-  return `${MONTH_NAMES[Number(m) - 1]?.slice(0, 3) ?? m} ${y.slice(2)}`;
+  return `${MONTH_NAMES[Number(m) - 1]?.slice(0, 3) ?? m} ${(y ?? "").slice(2)}`;
 }
 
 export interface AnalysisInput {
@@ -116,8 +120,8 @@ export function analyze({
   const valid = transactions.filter((t) => !invalidRecords.includes(t));
   const sorted = [...valid].sort((a, b) => (a.txn_date! < b.txn_date! ? -1 : 1));
 
-  const start = sorted.length ? sorted[0].txn_date! : null;
-  const end = sorted.length ? sorted[sorted.length - 1].txn_date! : null;
+  const start = sorted.length ? sorted[0]!.txn_date! : null;
+  const end = sorted.length ? sorted[sorted.length - 1]!.txn_date! : null;
   const months = start && end ? monthRange(monthKey(start), monthKey(end)) : [];
 
   const income = sorted.filter((t) => t.type === "income");
@@ -165,7 +169,7 @@ export function analyze({
   // ---------- STEP 4: cash flow ----------
   const cfMonthly: MonthPoint[] = months.map((m, i) => ({
     month: m,
-    value: revMonthly[i].value - expMonthly[i].value,
+    value: (revMonthly[i]?.value ?? 0) - (expMonthly[i]?.value ?? 0),
   }));
   const cfValues = cfMonthly.map((p) => p.value);
   const cashflow = {
@@ -188,7 +192,7 @@ export function analyze({
   let gapCount = 0;
   for (let i = 1; i < sorted.length; i++) {
     const diff =
-      (new Date(sorted[i].txn_date!).getTime() - new Date(sorted[i - 1].txn_date!).getTime()) /
+      (new Date(sorted[i]!.txn_date!).getTime() - new Date(sorted[i - 1]!.txn_date!).getTime()) /
       86400000;
     if (diff > maxGapDays) maxGapDays = Math.round(diff);
     if (diff > 21) gapCount += 1;
@@ -607,7 +611,7 @@ export function analyze({
     .map((p) => p.label.toLowerCase())
     .join(", ")}.${
     negatives.length
-      ? ` ${negatives[0].label} reduced the overall signal.`
+      ? ` ${negatives[0]!.label} reduced the overall signal.`
       : " No material negative drivers were detected."
   }`;
 
