@@ -37,8 +37,8 @@ export function Metric({
 }: {
   label: string;
   value: ReactNode;
-  note?: string;
-  tone?: "brand" | "coral" | "amber";
+  note?: string | undefined;
+  tone?: "brand" | "coral" | "amber" | undefined;
 }) {
   return (
     <div>
@@ -144,7 +144,7 @@ export function Field({
   children,
 }: {
   label: string;
-  hint?: string;
+  hint?: string | undefined;
   children: ReactNode;
 }) {
   return (

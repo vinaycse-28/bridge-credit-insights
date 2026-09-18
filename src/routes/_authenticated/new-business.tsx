@@ -38,7 +38,7 @@ function NewBusiness() {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [name, setName] = useState("");
-  const [type, setType] = useState(TYPES[0]);
+  const [type, setType] = useState(TYPES[0] as string);
   const [age, setAge] = useState("3");
   const [revenue, setRevenue] = useState("");
   const [coverage, setCoverage] = useState("12");
