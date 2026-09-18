@@ -16,8 +16,11 @@ import { Route as AuthenticatedBusinessesRouteImport } from './routes/_authentic
 import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
 import { Route as AuthenticatedNewBusinessRouteImport } from './routes/_authenticated/new-business'
 import { Route as AuthenticatedBIdAnalyzeRouteImport } from './routes/_authenticated/b.$id.analyze'
+import { Route as AuthenticatedBIdBehaviourRouteImport } from './routes/_authenticated/b.$id.behaviour'
 import { Route as AuthenticatedBIdDataRouteImport } from './routes/_authenticated/b.$id.data'
+import { Route as AuthenticatedBIdFinancialRouteImport } from './routes/_authenticated/b.$id.financial'
 import { Route as AuthenticatedBIdOverviewRouteImport } from './routes/_authenticated/b.$id.overview'
+import { Route as AuthenticatedBIdTrustRouteImport } from './routes/_authenticated/b.$id.trust'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -54,17 +57,34 @@ const AuthenticatedBIdAnalyzeRoute = AuthenticatedBIdAnalyzeRouteImport.update({
   path: '/b/$id/analyze',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedBIdBehaviourRoute =
+  AuthenticatedBIdBehaviourRouteImport.update({
+    id: '/b/$id/behaviour',
+    path: '/b/$id/behaviour',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedBIdDataRoute = AuthenticatedBIdDataRouteImport.update({
   id: '/b/$id/data',
   path: '/b/$id/data',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedBIdFinancialRoute =
+  AuthenticatedBIdFinancialRouteImport.update({
+    id: '/b/$id/financial',
+    path: '/b/$id/financial',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedBIdOverviewRoute =
   AuthenticatedBIdOverviewRouteImport.update({
     id: '/b/$id/overview',
     path: '/b/$id/overview',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedBIdTrustRoute = AuthenticatedBIdTrustRouteImport.update({
+  id: '/b/$id/trust',
+  path: '/b/$id/trust',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -73,8 +93,11 @@ export interface FileRoutesByFullPath {
   '/home': typeof AuthenticatedHomeRoute
   '/new-business': typeof AuthenticatedNewBusinessRoute
   '/b/$id/analyze': typeof AuthenticatedBIdAnalyzeRoute
+  '/b/$id/behaviour': typeof AuthenticatedBIdBehaviourRoute
   '/b/$id/data': typeof AuthenticatedBIdDataRoute
+  '/b/$id/financial': typeof AuthenticatedBIdFinancialRoute
   '/b/$id/overview': typeof AuthenticatedBIdOverviewRoute
+  '/b/$id/trust': typeof AuthenticatedBIdTrustRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -83,8 +106,11 @@ export interface FileRoutesByTo {
   '/home': typeof AuthenticatedHomeRoute
   '/new-business': typeof AuthenticatedNewBusinessRoute
   '/b/$id/analyze': typeof AuthenticatedBIdAnalyzeRoute
+  '/b/$id/behaviour': typeof AuthenticatedBIdBehaviourRoute
   '/b/$id/data': typeof AuthenticatedBIdDataRoute
+  '/b/$id/financial': typeof AuthenticatedBIdFinancialRoute
   '/b/$id/overview': typeof AuthenticatedBIdOverviewRoute
+  '/b/$id/trust': typeof AuthenticatedBIdTrustRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -95,8 +121,11 @@ export interface FileRoutesById {
   '/_authenticated/home': typeof AuthenticatedHomeRoute
   '/_authenticated/new-business': typeof AuthenticatedNewBusinessRoute
   '/_authenticated/b/$id/analyze': typeof AuthenticatedBIdAnalyzeRoute
+  '/_authenticated/b/$id/behaviour': typeof AuthenticatedBIdBehaviourRoute
   '/_authenticated/b/$id/data': typeof AuthenticatedBIdDataRoute
+  '/_authenticated/b/$id/financial': typeof AuthenticatedBIdFinancialRoute
   '/_authenticated/b/$id/overview': typeof AuthenticatedBIdOverviewRoute
+  '/_authenticated/b/$id/trust': typeof AuthenticatedBIdTrustRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -107,8 +136,11 @@ export interface FileRouteTypes {
     | '/home'
     | '/new-business'
     | '/b/$id/analyze'
+    | '/b/$id/behaviour'
     | '/b/$id/data'
+    | '/b/$id/financial'
     | '/b/$id/overview'
+    | '/b/$id/trust'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -117,8 +149,11 @@ export interface FileRouteTypes {
     | '/home'
     | '/new-business'
     | '/b/$id/analyze'
+    | '/b/$id/behaviour'
     | '/b/$id/data'
+    | '/b/$id/financial'
     | '/b/$id/overview'
+    | '/b/$id/trust'
   id:
     | '__root__'
     | '/'
@@ -128,8 +163,11 @@ export interface FileRouteTypes {
     | '/_authenticated/home'
     | '/_authenticated/new-business'
     | '/_authenticated/b/$id/analyze'
+    | '/_authenticated/b/$id/behaviour'
     | '/_authenticated/b/$id/data'
+    | '/_authenticated/b/$id/financial'
     | '/_authenticated/b/$id/overview'
+    | '/_authenticated/b/$id/trust'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -189,6 +227,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBIdAnalyzeRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/b/$id/behaviour': {
+      id: '/_authenticated/b/$id/behaviour'
+      path: '/b/$id/behaviour'
+      fullPath: '/b/$id/behaviour'
+      preLoaderRoute: typeof AuthenticatedBIdBehaviourRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/b/$id/data': {
       id: '/_authenticated/b/$id/data'
       path: '/b/$id/data'
@@ -196,11 +241,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBIdDataRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/b/$id/financial': {
+      id: '/_authenticated/b/$id/financial'
+      path: '/b/$id/financial'
+      fullPath: '/b/$id/financial'
+      preLoaderRoute: typeof AuthenticatedBIdFinancialRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/b/$id/overview': {
       id: '/_authenticated/b/$id/overview'
       path: '/b/$id/overview'
       fullPath: '/b/$id/overview'
       preLoaderRoute: typeof AuthenticatedBIdOverviewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/trust': {
+      id: '/_authenticated/b/$id/trust'
+      path: '/b/$id/trust'
+      fullPath: '/b/$id/trust'
+      preLoaderRoute: typeof AuthenticatedBIdTrustRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
   }
@@ -211,8 +270,11 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
   AuthenticatedNewBusinessRoute: typeof AuthenticatedNewBusinessRoute
   AuthenticatedBIdAnalyzeRoute: typeof AuthenticatedBIdAnalyzeRoute
+  AuthenticatedBIdBehaviourRoute: typeof AuthenticatedBIdBehaviourRoute
   AuthenticatedBIdDataRoute: typeof AuthenticatedBIdDataRoute
+  AuthenticatedBIdFinancialRoute: typeof AuthenticatedBIdFinancialRoute
   AuthenticatedBIdOverviewRoute: typeof AuthenticatedBIdOverviewRoute
+  AuthenticatedBIdTrustRoute: typeof AuthenticatedBIdTrustRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -220,8 +282,11 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedHomeRoute: AuthenticatedHomeRoute,
   AuthenticatedNewBusinessRoute: AuthenticatedNewBusinessRoute,
   AuthenticatedBIdAnalyzeRoute: AuthenticatedBIdAnalyzeRoute,
+  AuthenticatedBIdBehaviourRoute: AuthenticatedBIdBehaviourRoute,
   AuthenticatedBIdDataRoute: AuthenticatedBIdDataRoute,
+  AuthenticatedBIdFinancialRoute: AuthenticatedBIdFinancialRoute,
   AuthenticatedBIdOverviewRoute: AuthenticatedBIdOverviewRoute,
+  AuthenticatedBIdTrustRoute: AuthenticatedBIdTrustRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
