@@ -20,6 +20,9 @@ import { Route as AuthenticatedBIdBehaviourRouteImport } from './routes/_authent
 import { Route as AuthenticatedBIdDataRouteImport } from './routes/_authenticated/b.$id.data'
 import { Route as AuthenticatedBIdFinancialRouteImport } from './routes/_authenticated/b.$id.financial'
 import { Route as AuthenticatedBIdOverviewRouteImport } from './routes/_authenticated/b.$id.overview'
+import { Route as AuthenticatedBIdScoreRouteImport } from './routes/_authenticated/b.$id.score'
+import { Route as AuthenticatedBIdStoryRouteImport } from './routes/_authenticated/b.$id.story'
+import { Route as AuthenticatedBIdTransactionsRouteImport } from './routes/_authenticated/b.$id.transactions'
 import { Route as AuthenticatedBIdTrustRouteImport } from './routes/_authenticated/b.$id.trust'
 
 const IndexRoute = IndexRouteImport.update({
@@ -80,6 +83,22 @@ const AuthenticatedBIdOverviewRoute =
     path: '/b/$id/overview',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedBIdScoreRoute = AuthenticatedBIdScoreRouteImport.update({
+  id: '/b/$id/score',
+  path: '/b/$id/score',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBIdStoryRoute = AuthenticatedBIdStoryRouteImport.update({
+  id: '/b/$id/story',
+  path: '/b/$id/story',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBIdTransactionsRoute =
+  AuthenticatedBIdTransactionsRouteImport.update({
+    id: '/b/$id/transactions',
+    path: '/b/$id/transactions',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedBIdTrustRoute = AuthenticatedBIdTrustRouteImport.update({
   id: '/b/$id/trust',
   path: '/b/$id/trust',
@@ -97,6 +116,9 @@ export interface FileRoutesByFullPath {
   '/b/$id/data': typeof AuthenticatedBIdDataRoute
   '/b/$id/financial': typeof AuthenticatedBIdFinancialRoute
   '/b/$id/overview': typeof AuthenticatedBIdOverviewRoute
+  '/b/$id/score': typeof AuthenticatedBIdScoreRoute
+  '/b/$id/story': typeof AuthenticatedBIdStoryRoute
+  '/b/$id/transactions': typeof AuthenticatedBIdTransactionsRoute
   '/b/$id/trust': typeof AuthenticatedBIdTrustRoute
 }
 export interface FileRoutesByTo {
@@ -110,6 +132,9 @@ export interface FileRoutesByTo {
   '/b/$id/data': typeof AuthenticatedBIdDataRoute
   '/b/$id/financial': typeof AuthenticatedBIdFinancialRoute
   '/b/$id/overview': typeof AuthenticatedBIdOverviewRoute
+  '/b/$id/score': typeof AuthenticatedBIdScoreRoute
+  '/b/$id/story': typeof AuthenticatedBIdStoryRoute
+  '/b/$id/transactions': typeof AuthenticatedBIdTransactionsRoute
   '/b/$id/trust': typeof AuthenticatedBIdTrustRoute
 }
 export interface FileRoutesById {
@@ -125,6 +150,9 @@ export interface FileRoutesById {
   '/_authenticated/b/$id/data': typeof AuthenticatedBIdDataRoute
   '/_authenticated/b/$id/financial': typeof AuthenticatedBIdFinancialRoute
   '/_authenticated/b/$id/overview': typeof AuthenticatedBIdOverviewRoute
+  '/_authenticated/b/$id/score': typeof AuthenticatedBIdScoreRoute
+  '/_authenticated/b/$id/story': typeof AuthenticatedBIdStoryRoute
+  '/_authenticated/b/$id/transactions': typeof AuthenticatedBIdTransactionsRoute
   '/_authenticated/b/$id/trust': typeof AuthenticatedBIdTrustRoute
 }
 export interface FileRouteTypes {
@@ -140,6 +168,9 @@ export interface FileRouteTypes {
     | '/b/$id/data'
     | '/b/$id/financial'
     | '/b/$id/overview'
+    | '/b/$id/score'
+    | '/b/$id/story'
+    | '/b/$id/transactions'
     | '/b/$id/trust'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -153,6 +184,9 @@ export interface FileRouteTypes {
     | '/b/$id/data'
     | '/b/$id/financial'
     | '/b/$id/overview'
+    | '/b/$id/score'
+    | '/b/$id/story'
+    | '/b/$id/transactions'
     | '/b/$id/trust'
   id:
     | '__root__'
@@ -167,6 +201,9 @@ export interface FileRouteTypes {
     | '/_authenticated/b/$id/data'
     | '/_authenticated/b/$id/financial'
     | '/_authenticated/b/$id/overview'
+    | '/_authenticated/b/$id/score'
+    | '/_authenticated/b/$id/story'
+    | '/_authenticated/b/$id/transactions'
     | '/_authenticated/b/$id/trust'
   fileRoutesById: FileRoutesById
 }
@@ -255,6 +292,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedBIdOverviewRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/b/$id/score': {
+      id: '/_authenticated/b/$id/score'
+      path: '/b/$id/score'
+      fullPath: '/b/$id/score'
+      preLoaderRoute: typeof AuthenticatedBIdScoreRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/story': {
+      id: '/_authenticated/b/$id/story'
+      path: '/b/$id/story'
+      fullPath: '/b/$id/story'
+      preLoaderRoute: typeof AuthenticatedBIdStoryRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/transactions': {
+      id: '/_authenticated/b/$id/transactions'
+      path: '/b/$id/transactions'
+      fullPath: '/b/$id/transactions'
+      preLoaderRoute: typeof AuthenticatedBIdTransactionsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/b/$id/trust': {
       id: '/_authenticated/b/$id/trust'
       path: '/b/$id/trust'
@@ -274,6 +332,9 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedBIdDataRoute: typeof AuthenticatedBIdDataRoute
   AuthenticatedBIdFinancialRoute: typeof AuthenticatedBIdFinancialRoute
   AuthenticatedBIdOverviewRoute: typeof AuthenticatedBIdOverviewRoute
+  AuthenticatedBIdScoreRoute: typeof AuthenticatedBIdScoreRoute
+  AuthenticatedBIdStoryRoute: typeof AuthenticatedBIdStoryRoute
+  AuthenticatedBIdTransactionsRoute: typeof AuthenticatedBIdTransactionsRoute
   AuthenticatedBIdTrustRoute: typeof AuthenticatedBIdTrustRoute
 }
 
@@ -286,6 +347,9 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedBIdDataRoute: AuthenticatedBIdDataRoute,
   AuthenticatedBIdFinancialRoute: AuthenticatedBIdFinancialRoute,
   AuthenticatedBIdOverviewRoute: AuthenticatedBIdOverviewRoute,
+  AuthenticatedBIdScoreRoute: AuthenticatedBIdScoreRoute,
+  AuthenticatedBIdStoryRoute: AuthenticatedBIdStoryRoute,
+  AuthenticatedBIdTransactionsRoute: AuthenticatedBIdTransactionsRoute,
   AuthenticatedBIdTrustRoute: AuthenticatedBIdTrustRoute,
 }
 
