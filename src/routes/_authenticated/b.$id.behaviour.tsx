@@ -19,7 +19,7 @@ export const Route = createFileRoute("/_authenticated/b/$id/behaviour")({
       },
     ],
   }),
-  component: Behaviour;
+  component: Behaviour,
 });
 
 function Behaviour() {
