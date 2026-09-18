@@ -10,33 +10,219 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedBusinessesRouteImport } from './routes/_authenticated/businesses'
+import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
+import { Route as AuthenticatedNewBusinessRouteImport } from './routes/_authenticated/new-business'
+import { Route as AuthenticatedBIdAnalyzeRouteImport } from './routes/_authenticated/b.$id.analyze'
+import { Route as AuthenticatedBIdBehaviourRouteImport } from './routes/_authenticated/b.$id.behaviour'
+import { Route as AuthenticatedBIdDataRouteImport } from './routes/_authenticated/b.$id.data'
+import { Route as AuthenticatedBIdFinancialRouteImport } from './routes/_authenticated/b.$id.financial'
+import { Route as AuthenticatedBIdOverviewRouteImport } from './routes/_authenticated/b.$id.overview'
+import { Route as AuthenticatedBIdScoreRouteImport } from './routes/_authenticated/b.$id.score'
+import { Route as AuthenticatedBIdStoryRouteImport } from './routes/_authenticated/b.$id.story'
+import { Route as AuthenticatedBIdTransactionsRouteImport } from './routes/_authenticated/b.$id.transactions'
+import { Route as AuthenticatedBIdTrustRouteImport } from './routes/_authenticated/b.$id.trust'
+import { Route as AuthenticatedBIdUpdateRouteImport } from './routes/_authenticated/b.$id.update'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedBusinessesRoute = AuthenticatedBusinessesRouteImport.update({
+  id: '/businesses',
+  path: '/businesses',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedHomeRoute = AuthenticatedHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedNewBusinessRoute =
+  AuthenticatedNewBusinessRouteImport.update({
+    id: '/new-business',
+    path: '/new-business',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBIdAnalyzeRoute = AuthenticatedBIdAnalyzeRouteImport.update({
+  id: '/b/$id/analyze',
+  path: '/b/$id/analyze',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBIdBehaviourRoute =
+  AuthenticatedBIdBehaviourRouteImport.update({
+    id: '/b/$id/behaviour',
+    path: '/b/$id/behaviour',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBIdDataRoute = AuthenticatedBIdDataRouteImport.update({
+  id: '/b/$id/data',
+  path: '/b/$id/data',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBIdFinancialRoute =
+  AuthenticatedBIdFinancialRouteImport.update({
+    id: '/b/$id/financial',
+    path: '/b/$id/financial',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBIdOverviewRoute =
+  AuthenticatedBIdOverviewRouteImport.update({
+    id: '/b/$id/overview',
+    path: '/b/$id/overview',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBIdScoreRoute = AuthenticatedBIdScoreRouteImport.update({
+  id: '/b/$id/score',
+  path: '/b/$id/score',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBIdStoryRoute = AuthenticatedBIdStoryRouteImport.update({
+  id: '/b/$id/story',
+  path: '/b/$id/story',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBIdTransactionsRoute =
+  AuthenticatedBIdTransactionsRouteImport.update({
+    id: '/b/$id/transactions',
+    path: '/b/$id/transactions',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBIdTrustRoute = AuthenticatedBIdTrustRouteImport.update({
+  id: '/b/$id/trust',
+  path: '/b/$id/trust',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedBIdUpdateRoute = AuthenticatedBIdUpdateRouteImport.update({
+  id: '/b/$id/update',
+  path: '/b/$id/update',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/businesses': typeof AuthenticatedBusinessesRoute
+  '/home': typeof AuthenticatedHomeRoute
+  '/new-business': typeof AuthenticatedNewBusinessRoute
+  '/b/$id/analyze': typeof AuthenticatedBIdAnalyzeRoute
+  '/b/$id/behaviour': typeof AuthenticatedBIdBehaviourRoute
+  '/b/$id/data': typeof AuthenticatedBIdDataRoute
+  '/b/$id/financial': typeof AuthenticatedBIdFinancialRoute
+  '/b/$id/overview': typeof AuthenticatedBIdOverviewRoute
+  '/b/$id/score': typeof AuthenticatedBIdScoreRoute
+  '/b/$id/story': typeof AuthenticatedBIdStoryRoute
+  '/b/$id/transactions': typeof AuthenticatedBIdTransactionsRoute
+  '/b/$id/trust': typeof AuthenticatedBIdTrustRoute
+  '/b/$id/update': typeof AuthenticatedBIdUpdateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/businesses': typeof AuthenticatedBusinessesRoute
+  '/home': typeof AuthenticatedHomeRoute
+  '/new-business': typeof AuthenticatedNewBusinessRoute
+  '/b/$id/analyze': typeof AuthenticatedBIdAnalyzeRoute
+  '/b/$id/behaviour': typeof AuthenticatedBIdBehaviourRoute
+  '/b/$id/data': typeof AuthenticatedBIdDataRoute
+  '/b/$id/financial': typeof AuthenticatedBIdFinancialRoute
+  '/b/$id/overview': typeof AuthenticatedBIdOverviewRoute
+  '/b/$id/score': typeof AuthenticatedBIdScoreRoute
+  '/b/$id/story': typeof AuthenticatedBIdStoryRoute
+  '/b/$id/transactions': typeof AuthenticatedBIdTransactionsRoute
+  '/b/$id/trust': typeof AuthenticatedBIdTrustRoute
+  '/b/$id/update': typeof AuthenticatedBIdUpdateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/_authenticated/businesses': typeof AuthenticatedBusinessesRoute
+  '/_authenticated/home': typeof AuthenticatedHomeRoute
+  '/_authenticated/new-business': typeof AuthenticatedNewBusinessRoute
+  '/_authenticated/b/$id/analyze': typeof AuthenticatedBIdAnalyzeRoute
+  '/_authenticated/b/$id/behaviour': typeof AuthenticatedBIdBehaviourRoute
+  '/_authenticated/b/$id/data': typeof AuthenticatedBIdDataRoute
+  '/_authenticated/b/$id/financial': typeof AuthenticatedBIdFinancialRoute
+  '/_authenticated/b/$id/overview': typeof AuthenticatedBIdOverviewRoute
+  '/_authenticated/b/$id/score': typeof AuthenticatedBIdScoreRoute
+  '/_authenticated/b/$id/story': typeof AuthenticatedBIdStoryRoute
+  '/_authenticated/b/$id/transactions': typeof AuthenticatedBIdTransactionsRoute
+  '/_authenticated/b/$id/trust': typeof AuthenticatedBIdTrustRoute
+  '/_authenticated/b/$id/update': typeof AuthenticatedBIdUpdateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/businesses'
+    | '/home'
+    | '/new-business'
+    | '/b/$id/analyze'
+    | '/b/$id/behaviour'
+    | '/b/$id/data'
+    | '/b/$id/financial'
+    | '/b/$id/overview'
+    | '/b/$id/score'
+    | '/b/$id/story'
+    | '/b/$id/transactions'
+    | '/b/$id/trust'
+    | '/b/$id/update'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/businesses'
+    | '/home'
+    | '/new-business'
+    | '/b/$id/analyze'
+    | '/b/$id/behaviour'
+    | '/b/$id/data'
+    | '/b/$id/financial'
+    | '/b/$id/overview'
+    | '/b/$id/score'
+    | '/b/$id/story'
+    | '/b/$id/transactions'
+    | '/b/$id/trust'
+    | '/b/$id/update'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/_authenticated/businesses'
+    | '/_authenticated/home'
+    | '/_authenticated/new-business'
+    | '/_authenticated/b/$id/analyze'
+    | '/_authenticated/b/$id/behaviour'
+    | '/_authenticated/b/$id/data'
+    | '/_authenticated/b/$id/financial'
+    | '/_authenticated/b/$id/overview'
+    | '/_authenticated/b/$id/score'
+    | '/_authenticated/b/$id/story'
+    | '/_authenticated/b/$id/transactions'
+    | '/_authenticated/b/$id/trust'
+    | '/_authenticated/b/$id/update'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +234,153 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/businesses': {
+      id: '/_authenticated/businesses'
+      path: '/businesses'
+      fullPath: '/businesses'
+      preLoaderRoute: typeof AuthenticatedBusinessesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/home': {
+      id: '/_authenticated/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof AuthenticatedHomeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/new-business': {
+      id: '/_authenticated/new-business'
+      path: '/new-business'
+      fullPath: '/new-business'
+      preLoaderRoute: typeof AuthenticatedNewBusinessRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/analyze': {
+      id: '/_authenticated/b/$id/analyze'
+      path: '/b/$id/analyze'
+      fullPath: '/b/$id/analyze'
+      preLoaderRoute: typeof AuthenticatedBIdAnalyzeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/behaviour': {
+      id: '/_authenticated/b/$id/behaviour'
+      path: '/b/$id/behaviour'
+      fullPath: '/b/$id/behaviour'
+      preLoaderRoute: typeof AuthenticatedBIdBehaviourRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/data': {
+      id: '/_authenticated/b/$id/data'
+      path: '/b/$id/data'
+      fullPath: '/b/$id/data'
+      preLoaderRoute: typeof AuthenticatedBIdDataRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/financial': {
+      id: '/_authenticated/b/$id/financial'
+      path: '/b/$id/financial'
+      fullPath: '/b/$id/financial'
+      preLoaderRoute: typeof AuthenticatedBIdFinancialRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/overview': {
+      id: '/_authenticated/b/$id/overview'
+      path: '/b/$id/overview'
+      fullPath: '/b/$id/overview'
+      preLoaderRoute: typeof AuthenticatedBIdOverviewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/score': {
+      id: '/_authenticated/b/$id/score'
+      path: '/b/$id/score'
+      fullPath: '/b/$id/score'
+      preLoaderRoute: typeof AuthenticatedBIdScoreRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/story': {
+      id: '/_authenticated/b/$id/story'
+      path: '/b/$id/story'
+      fullPath: '/b/$id/story'
+      preLoaderRoute: typeof AuthenticatedBIdStoryRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/transactions': {
+      id: '/_authenticated/b/$id/transactions'
+      path: '/b/$id/transactions'
+      fullPath: '/b/$id/transactions'
+      preLoaderRoute: typeof AuthenticatedBIdTransactionsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/trust': {
+      id: '/_authenticated/b/$id/trust'
+      path: '/b/$id/trust'
+      fullPath: '/b/$id/trust'
+      preLoaderRoute: typeof AuthenticatedBIdTrustRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/b/$id/update': {
+      id: '/_authenticated/b/$id/update'
+      path: '/b/$id/update'
+      fullPath: '/b/$id/update'
+      preLoaderRoute: typeof AuthenticatedBIdUpdateRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedBusinessesRoute: typeof AuthenticatedBusinessesRoute
+  AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
+  AuthenticatedNewBusinessRoute: typeof AuthenticatedNewBusinessRoute
+  AuthenticatedBIdAnalyzeRoute: typeof AuthenticatedBIdAnalyzeRoute
+  AuthenticatedBIdBehaviourRoute: typeof AuthenticatedBIdBehaviourRoute
+  AuthenticatedBIdDataRoute: typeof AuthenticatedBIdDataRoute
+  AuthenticatedBIdFinancialRoute: typeof AuthenticatedBIdFinancialRoute
+  AuthenticatedBIdOverviewRoute: typeof AuthenticatedBIdOverviewRoute
+  AuthenticatedBIdScoreRoute: typeof AuthenticatedBIdScoreRoute
+  AuthenticatedBIdStoryRoute: typeof AuthenticatedBIdStoryRoute
+  AuthenticatedBIdTransactionsRoute: typeof AuthenticatedBIdTransactionsRoute
+  AuthenticatedBIdTrustRoute: typeof AuthenticatedBIdTrustRoute
+  AuthenticatedBIdUpdateRoute: typeof AuthenticatedBIdUpdateRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedBusinessesRoute: AuthenticatedBusinessesRoute,
+  AuthenticatedHomeRoute: AuthenticatedHomeRoute,
+  AuthenticatedNewBusinessRoute: AuthenticatedNewBusinessRoute,
+  AuthenticatedBIdAnalyzeRoute: AuthenticatedBIdAnalyzeRoute,
+  AuthenticatedBIdBehaviourRoute: AuthenticatedBIdBehaviourRoute,
+  AuthenticatedBIdDataRoute: AuthenticatedBIdDataRoute,
+  AuthenticatedBIdFinancialRoute: AuthenticatedBIdFinancialRoute,
+  AuthenticatedBIdOverviewRoute: AuthenticatedBIdOverviewRoute,
+  AuthenticatedBIdScoreRoute: AuthenticatedBIdScoreRoute,
+  AuthenticatedBIdStoryRoute: AuthenticatedBIdStoryRoute,
+  AuthenticatedBIdTransactionsRoute: AuthenticatedBIdTransactionsRoute,
+  AuthenticatedBIdTrustRoute: AuthenticatedBIdTrustRoute,
+  AuthenticatedBIdUpdateRoute: AuthenticatedBIdUpdateRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
